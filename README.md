@@ -14,6 +14,10 @@
 
  public class LoggerService : For.Log.BaseLogger
     {
+        public LoggerService(LoggerProperty loggerProperty) : base(loggerProperty)
+        {
+        }
+        
         protected override void WriteFatalAsync(string log, LogInfo logInfo)
         {
             var p = log;
