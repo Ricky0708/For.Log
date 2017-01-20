@@ -55,7 +55,8 @@
   * 在 Startup.Auth中建立一個 Logger 實體
   * 將這一個實體放進Middleware中，讓pipeline自動取用
     * 指定Logger要進行動作的Level，未被加入的Level，將在執行階段不會有任何動作(例如在程式中使用 Logger.Warn("test")，在此範例中將不會被輸出)
-  * 按照上下文的參考，你可以使用將多個Logger注入Middleware中，例如：app.UseLoggerMiddleware(loggerForFile)...etc
+  * 按照上下文的參考，你可以使用將多個Logger注入Middleware中，例如：app.UseLoggerMiddleware(loggerForFile)...etc
+    
 ```C#
   //Create global logger
   var logger = new LoggerService(new LoggerProperty()
@@ -69,7 +70,7 @@
 
 * 開始使用 Logger
   * 取得 Logger 實體
-  * 這部份可以取出不同的Logger，例如：LoggerProvider<LoggerForFile>.GetLogger()...etc
+  * 這部份可以取出不同的Logger，例如：LoggerProvider<LoggerForFile>.GetLogger()...etc
   ```C#
   var logger = LoggerProvider<LoggerService>.GetLogger()
   ```
