@@ -12,7 +12,6 @@ namespace For.Log
         public DateTime LogTime { get; set; }  
         public StackTrace stackTrace { get; set; }
         public string envStackTrace { get; set; }
-        public int test { get; set; }
 
     }
 }
