@@ -11,6 +11,7 @@ namespace For.Log
     {
 
         private LoggerProperty _loggerProperty;
+        private object lockObject = new object();
 
 
         public BaseLogger(LoggerProperty LoggerProperty)
@@ -18,7 +19,6 @@ namespace For.Log
             _loggerProperty = LoggerProperty;
         }
 
-        private object lockObject = new object();
 
         public virtual void WriteLogAtEndRequest(string log)
         {
