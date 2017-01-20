@@ -74,7 +74,7 @@
   ```C#
   var logger = LoggerProvider<LoggerService>.GetLogger()
   ```
-  * 輸出 Log
+* 輸出 Log
   ```C#
   logger.Debug("debug");
   logger.Error("Error");
