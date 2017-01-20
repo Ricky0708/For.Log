@@ -10,7 +10,7 @@
 * 實作輸出的邏輯
   * 建立一個Logger並繼承 BaseLogger
   * 覆寫 6 個 void 如何去輸出你的 Log
-  * 當然你可以實作多個Logger分別提供給不同方式的輸出，在後方分別取出使用，例如 LoggerForFile、LoggerForElmah、LoggerForSQL、LoggerForAnyThing
+  * 當然你可以實作多個Logger分別提供給不同方式的輸出，在後方分別取出使用，例如 LoggerForFile、LoggerForElmah、LoggerForSQL、LoggerForAnyThing
 ```C#
 
  public class LoggerService : For.Log.BaseLogger
