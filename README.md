@@ -75,3 +75,6 @@
   logger.Warn("Warn");
   logger.Trace("Trace");
   ```
+
+# History
+* V 1.0.0
