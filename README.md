@@ -71,18 +71,19 @@
 * 開始使用 Logger
   * 取得 Logger 實體
   * 這部份可以取出不同的Logger，例如：LoggerProvider<LoggerForFile>.GetLogger()...etc
-  ```C#
+```C#
   var logger = LoggerProvider<LoggerService>.GetLogger()
-  ```
+```
 * 輸出 Log
-  ```C#
+```C#
   logger.Debug("debug");
   logger.Error("Error");
   logger.Fatal("Fatal");
   logger.Info("Info");
   logger.Warn("Warn");
   logger.Trace("Trace");
-  ```
+```
+
 
 # History
 * V 1.0.0
