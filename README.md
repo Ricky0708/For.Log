@@ -14,32 +14,36 @@
 
  public class LoggerService : For.Log.BaseLogger
     {
-        protected override void WriteFatalAsync(string log, StackTrace stackTrace, string envStackTrace)
+        public LoggerService(LoggerProperty loggerProperty) : base(loggerProperty)
+        {
+        }
+        
+        protected override void WriteFatalAsync(string log, LogInfo logInfo)
         {
             var p = log;
         }
 
-        protected override void WriteErrorAsync(string log, StackTrace stackTrace, string envStackTrace)
+        protected override void WriteErrorAsync(string log, LogInfo logInfo)
         {
             var p = log;
         }
 
-        protected override void WriteWarnAsync(string log, StackTrace stackTrace, string envStackTrace)
+        protected override void WriteWarnAsync(string log, LogInfo logInfo)
         {
             var p = log;
         }
 
-        protected override void WriteInfoAsync(string log, StackTrace stackTrace, string envStackTrace)
+        protected override void WriteInfoAsync(string log, LogInfo logInfo)
         {
             var p = log;
         }
 
-        protected override void WriteDebugAsync(string log, StackTrace stackTrace, string envStackTrace)
+        protected override void WriteDebugAsync(string log, LogInfo logInfo)
         {
             var p = log;
         }
 
-        protected override void WriteTraceAsync(string log, StackTrace stackTrace, string envStackTrace)
+        protected override void WriteTraceAsync(string log, LogInfo logInfo)
         {
             var p = log;
         }
@@ -51,14 +55,14 @@
   * 將這一個實體放進Middleware中，讓pipeline自動取用
     * 指定Logger要進行動作的Level，未被加入的Level，將在執行階段不會有任何動作(例如在程式中使用 Logger.Warn("test")，在此範例中將不會被輸出)
 ```C#
-   var logger = new LoggerService();
-   logger.LoggerProperty = new LoggerProperty()
-   {
-       Level = (LogLevel)((long)LogLevel.Debug + (long)LogLevel.Info + (long)LogLevel.Error)
-   };
+  //Create global logger
+  var logger = new LoggerService(new LoggerProperty()
+  {
+      Level = (LogLevel)((long)LogLevel.Debug + (long)LogLevel.Info + (long)LogLevel.Error)
+  });
 
-   //Logger Middleware
-   app.UseLoggerMiddleware(logger);
+  //Logger Middleware
+  app.UseLoggerMiddleware(logger);
 ```
 
 * 開始使用 Logger
