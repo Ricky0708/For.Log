@@ -1,6 +1,8 @@
 # For.Log
 這一個元件建立應用程式級別的 Log記錄器，透過 Owin，所有 request統一使用同一個記錄器。
+
 元件在輸出 log 使用多執行緒方式寫出進行實作，每一條輸出都為獨立執行緒，並有實作 thread save
+
 在輸出 log 的過程中不會阻斷主執行緒中流程的執行
 
 # How to use
@@ -45,7 +47,7 @@
     
 ```
 * 使用owin middleware統一管理 Logger
-  * 建立一個 Logger 實體
+  * 在 Startup.Auth中建立一個 Logger 實體
   * 將這一個實體放進Middleware中，讓pipeline自動取用
     * 指定Logger要進行動作的Level，未被加入的Level，將在執行階段不會有任何動作(例如在程式中使用 Logger.Warn("test")，在此範例中將不會被輸出)
 ```C#
