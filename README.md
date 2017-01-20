@@ -61,7 +61,7 @@
   //Create global logger
   var logger = new LoggerService(new LoggerProperty()
   {
-      Level = LogLevel.Debug | LogLevel.Info | LogLevel.Error)
+      Level = LogLevel.Debug | LogLevel.Info | LogLevel.Error
   });
 
   //Logger Middleware
