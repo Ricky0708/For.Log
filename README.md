@@ -70,7 +70,7 @@
 
 * 開始使用 Logger
   * 取得 Logger 實體
-  * 這部份可以取出不同的Logger，例如：LoggerProvider<LoggerForFile>.GetLogger()...etc
+  * 這部份可以取出不同的Logger，例如：LoggerProvider<**LoggerForFile**>.GetLogger()...etc
 ```C#
   var logger = LoggerProvider<LoggerService>.GetLogger()
 ```
