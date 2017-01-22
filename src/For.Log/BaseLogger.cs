@@ -50,6 +50,7 @@ namespace For.Log
             WriteLog(LogLevel.Debug, () => WriteDebugAsync(log, GetLogInfo()));
         }
 
+        
         public void Trace(string log)
         {
             WriteLog(LogLevel.Trace, () => WriteTraceAsync(log, GetLogInfo()));
