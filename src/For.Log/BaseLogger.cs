@@ -27,47 +27,32 @@ namespace For.Log
 
         public void Fatal(string log)
         {
-            if ((_loggerProperty.Level & LogLevel.Fatal) > 0)
-            {
-                WriteLog(() => WriteFatalAsync(log, GetLogInfo()));
-            }
+            WriteLog(LogLevel.Fatal, () => WriteFatalAsync(log, GetLogInfo()));
         }
 
         public void Error(string log)
         {
-            if ((_loggerProperty.Level & LogLevel.Error) > 0)
-            {
-                WriteLog(() => WriteErrorAsync(log, GetLogInfo()));
-            }
+            WriteLog(LogLevel.Error, () => WriteErrorAsync(log, GetLogInfo()));
         }
 
         public void Warn(string log)
         {
-            if ((_loggerProperty.Level & LogLevel.Warn) > 0)
-            {
-                WriteLog(() => WriteWarnAsync(log, GetLogInfo()));
-            }
+            WriteLog(LogLevel.Warn, () => WriteWarnAsync(log, GetLogInfo()));
         }
+
         public void Info(string log)
         {
-            if ((_loggerProperty.Level & LogLevel.Info) > 0)
-            {
-                WriteLog(() => WriteInfoAsync(log, GetLogInfo()));
-            }
+            WriteLog(LogLevel.Info, () => WriteInfoAsync(log, GetLogInfo()));
         }
+
         public void Debug(string log)
         {
-            if ((_loggerProperty.Level & LogLevel.Debug) > 0)
-            {
-                WriteLog(() => WriteDebugAsync(log, GetLogInfo()));
-            }
+            WriteLog(LogLevel.Debug, () => WriteDebugAsync(log, GetLogInfo()));
         }
+
         public void Trace(string log)
         {
-            if ((_loggerProperty.Level & LogLevel.Trace) > 0)
-            {
-                WriteLog(() => WriteTraceAsync(log, GetLogInfo()));
-            }
+            WriteLog(LogLevel.Trace, () => WriteTraceAsync(log, GetLogInfo()));
         }
 
         private LogInfo GetLogInfo()
@@ -79,16 +64,19 @@ namespace For.Log
                 stackTrace = new System.Diagnostics.StackTrace()
             };
         }
-        private void WriteLog(Action write)
+        private void WriteLog(LogLevel level, Action write)
         {
-            System.Threading.Thread th = new System.Threading.Thread(() =>
+            if ((_loggerProperty.Level & level) > 0)
             {
-                lock (lockObject)
+                System.Threading.Thread th = new System.Threading.Thread(() =>
                 {
-                    write();
-                }
-            });
-            th.Start();
+                    lock (lockObject)
+                    {
+                        write();
+                    }
+                });
+                th.Start();
+            }
         }
 
         protected abstract void WriteFatalAsync(string log, LogInfo logInfo);
